@@ -1,0 +1,33 @@
+@startuml
+
+package Backend {
+   [API Server] -right-> [Database]
+}
+
+package Database {
+   [Database: PostgreSQL/MySQL]
+}
+
+package WebApp {
+   [Web Server: Nginx] --> [Frontend Static Files]
+}
+
+package CICD {
+   [CI/CD Server: GitHub Actions]
+   [CI/CD Server] -down-> [API Server]
+   [CI/CD Server] -down-> [Web Server: Nginx]
+}
+
+package Monitoring {
+   [Logging: ELK Stack] --> [API Server]
+   [Logging: ELK Stack] --> [Database]
+}
+
+[API Server] <--> [Database: PostgreSQL/MySQL]
+[Web Server: Nginx] <--> [API Server]
+
+[Docker Orchestration: Docker Compose] --> Backend
+[Docker Orchestration: Docker Compose] --> Database
+[Docker Orchestration: Docker Compose] --> WebApp
+
+@enduml
