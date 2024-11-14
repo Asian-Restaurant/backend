@@ -28,5 +28,5 @@ jobs:
       run: npm test
 
     - name: Build application
-      if: success() # Сборка выполняется только при успешном прохождении тестов
+      if: success()
       run: npm run build
