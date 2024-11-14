@@ -6,10 +6,10 @@
   "scripts": {
     "start": "node src/index.js",
     "test": "jest",
-    "build": "node build.js" // команда, которая используется для сборки
+    "build": "node build.js"
   },
   "dependencies": {
-    "express": "^4.17.1",       // добавить потом зависимости
+    "express": "^4.17.1",
     "mongoose": "^5.12.0"
   },
   "devDependencies": {
