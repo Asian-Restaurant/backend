@@ -1,0 +1,28 @@
+name: Render PlantUML Diagrams
+
+on:
+  push:
+    paths:
+      - '**.puml'
+  workflow_dispatch:
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Render PlantUML diagrams
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y plantuml
+          for file in $(find . -name "*.puml"); do
+            plantuml "$file"
+          done
+
+      - name: Upload rendered diagrams
+        uses: actions/upload-artifact@v2
+        with:
+          name: diagrams
+          path: '**/*.png'
