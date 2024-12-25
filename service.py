@@ -116,17 +116,16 @@ def add_to_cart():
     name_dish = data.get("name_dish")
     price = data.get("price")
     quantity = data.get("quantity")
-    comment = data.get("comment", "Want to bring home")  # Default comment
+    comment = data.get("comment", "Want to bring home")
 
-    cart_id = "generic_cart"  # This could be a session ID or similar
+    cart_id = "generic_cart"
 
     if cart_id not in carts:
         carts[cart_id] = {}
 
-    # Increase quantity if the item is already in the cart
     if name_dish in carts[cart_id]:
         carts[cart_id][name_dish]["quantity"] += quantity
-        carts[cart_id][name_dish]["total_price"] += price * quantity  # Update total price
+        carts[cart_id][name_dish]["total_price"] += price * quantity
     else:
         total_price = price * quantity
         carts[cart_id][name_dish] = {
@@ -141,7 +140,7 @@ def add_to_cart():
 
 @app.route("/cart", methods=["GET"])
 def get_cart():
-    cart_id = "generic_cart"  # This could be a session ID or similar
+    cart_id = "generic_cart"
 
     if cart_id not in carts or not carts[cart_id]:
         return jsonify({"error": "Cart is empty"}), 404
