@@ -29,6 +29,6 @@ jobs:
 
     - name: Run Tests
       run: |
-        flask --app app.py run --host=127.0.0.1 --port=5000 &
+        flask --app service.py run --host=127.0.0.1 --port=5000 &
         sleep 5
         curl -X GET http://127.0.0.1:5000/menu
