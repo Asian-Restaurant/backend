@@ -10,7 +10,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Firebase setup
-cred = credentials.Certificate("C:/Users/tshyb/source/repos/flutter/flutter projects/asian_paradise/lib/asian-paradise-de6ab-firebase-adminsdk-wxhiw-ef0a3b7fee.json")
+cred = credentials.Certificate("key.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
